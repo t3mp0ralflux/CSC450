@@ -41,6 +41,7 @@ namespace WebEval
                 lblQuestion.Visible = false;
                 btnRecStop.Visible = false;
                 btnPlayPause.Visible = false;
+                dgvResponses.Visible = false;
                 questions.Columns.Add("Questions");
                 questions.Rows.Add("Please Describe a system briefly");
                 questions.Rows.Add("How can nurses use this system to meet the aims of “Support Safety and Quality of Nursing”?");
@@ -70,6 +71,7 @@ namespace WebEval
                 btnRecStop.Visible = true;
                 btnPlayPause.Visible = true;
                 lblQuestion.Visible = true;
+                dgvResponses.Visible = true;
                 dgvResponses.DataSource = Session["question1"];
                 dgvResponses.DataBind();
                 
