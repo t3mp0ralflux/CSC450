@@ -68,10 +68,13 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="left_arrow.png" />
+    <Content Include="images\left_arrow.png" />
     <Content Include="main.html" />
     <Content Include="packages.config" />
-    <Content Include="right_arrow.png" />
+    <Content Include="images\pause_button.png" />
+    <Content Include="images\play_button.png" />
+    <Content Include="images\record_button.png" />
+    <Content Include="images\right_arrow.png" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
     <None Include="Web.Debug.config">
@@ -89,7 +92,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Global.asax" />
-    <Content Include="house_teal.gif" />
+    <Content Include="images\house_teal.gif" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -125,6 +128,7 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="images\stop_button.png" />
     <Content Include="Web.config" />
     <Content Include="WebEval.aspx" />
     <Content Include="Scripts\umd\popper.min.js.map" />
