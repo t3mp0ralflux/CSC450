@@ -12,6 +12,12 @@ namespace WebEval
     {
         
         DataTable questions;
+        DataTable question1;
+        DataTable question2;
+        DataTable question3;
+        DataTable question4;
+        DataTable question5;
+
         public int questionCounter;
 
         protected void Page_Load(object sender, EventArgs e)
@@ -19,6 +25,12 @@ namespace WebEval
             if (!IsPostBack)
             {
                 questions = new DataTable();
+                question1 = new DataTable();
+                question2 = new DataTable();
+                question3 = new DataTable();
+                question4 = new DataTable();
+                question5 = new DataTable();
+
 
                 questionCounter = -1;
                 dblUNCWId.Visible = true;
@@ -38,6 +50,11 @@ namespace WebEval
                 questions.Rows.Add("Any suggestions to improve “Unexpected Outcomes” this system?");
                 Session["questions"] = questions;
                 Session["counter"] = questionCounter;
+                question1.Columns.Add("Name");
+                question1.Columns.Add("Response");
+                question1.Rows.Add("Stacy", "Question1");
+                Session["question1"] = question1;
+                
             }
         }
 
@@ -53,6 +70,8 @@ namespace WebEval
                 btnRecStop.Visible = true;
                 btnPlayPause.Visible = true;
                 lblQuestion.Visible = true;
+                dgvResponses.DataSource = Session["question1"];
+                dgvResponses.DataBind();
                 
                 
             }

@@ -1,0 +1,86 @@
+﻿<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>WebEval</title>
+    <link href="Content/bootstrap.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <script>
+	var count = 0;
+	var questionSet = ["Please describe a system briefly.", "How can nurses use this system to meet the aims of “Support Safety and Quality of Nursing”?", "How can nurses use this system to meet the aims of “Facilitate Continuity of Care and Care Coordination”?", "How can nurses use this system to meet the aims of “Partner with Patients and Families to participate in Health care”?", "Tell me about possible “Unexpected Outcomes” of this system ", "Any suggestions to improve “Unexpected Outcomes” this system?"];
+	var text = "";
+	var i;
+	for (i = 0; i < questionSet.length; i++) {
+		text += (i+1)+") " + questionSet[i] + "<br>";
+	}
+	document.getElementById("display_question").innerHTML = text;
+    </script>
+
+    <div class="wrapper">
+
+        <header>
+            <h1>WebEval</h1>
+        </header>
+        <p id="display_question" align="middle">Press next to display first or next question.</p>
+
+        <section class="main-controls">
+            <canvas class="visualizer" height="60px"></canvas>
+            <div id="questions" align="center">
+                <button class="btn btn-success" type="button" onclick='document.getElementById("display_question").innerHTML = questionSet[count-1], count-=1'>Previous Question</button>
+                <button class="btn btn-success" type="button" onclick='document.getElementById("display_question").innerHTML = questionSet[count], count+=1'>Next Question</button>
+            </div>
+                <!--Space div for space between buttons-->
+                <div class="divider" style="margin-bottom: 3em;">
+                </div>
+                <div id="buttons" align="center">
+                    <button class="btn btn-success">Record</button>
+                    <button class="btn btn-success">Stop Recording</button>
+                </div>
+
+                <!--form action="/index.html" method="POST">
+                    <input type="file" name="recording" accept="audio/*">
+                    <input type="submit">
+                </form-->
+        </section>
+        <!--p id="question_block" align="middle"></p-->
+
+        <section class="sound-clips"></section>
+
+    </div>
+
+    <!--<label for="toggle">❔</label>
+    <input type="checkbox" id="toggle">
+    <aside>
+        <h2>Information</h2>
+
+        <p>WebEval was created using open source software courtesy of "Web dictaphone" which is built using <a href="https://developer.mozilla.org/en-US/docs/Web/API/Navigator.getUserMedia">getUserMedia</a> and the <a href="https://developer.mozilla.org/en-US/docs/Web/API/MediaRecorder_API">MediaRecorder API</a>, which provides an easier way to capture Media streams.</p>
+
+        <p>If you are unable to record, save or find a previously saved recording please contact the developer at bcb7611@uncw.edu!</p>
+
+        <p>
+            Helpful Instructions:
+            <ol id="helpful_info">
+                <li>Press 'Record' to begin recording, and press stop to stop recording.</li>
+                <li>Make sure to navigate through the questions using the 'next' and 'prev' buttons</li>
+                <li>To ask for help via email contact tmt5249@uncw.edu</li>
+            </ol>
+        </p>-->
+
+        <!--form action="/index.html" method="POST">
+            <input type="file" name="recording" accept="audio/*">
+            <input type="submit">
+        </form-->
+        <!--button id="install-btn">Install app "coming soon"</button-->
+    </aside>
+
+
+    <script src="scripts/install.js"></script>
+
+    <script src="scripts/mediaDevices-getUserMedia-polyfill.js"></script>
+
+    <!-- Below is your custom application script -->
+    <script src="scripts/app.js"></script>
+
+</body>
+</html>

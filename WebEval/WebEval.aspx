@@ -44,6 +44,14 @@
                 </ContentTemplate>
             </asp:updatepanel>
             </div>
+        <div>
+<asp:updatepanel ID="Previous_responses" runat="server" style="width:800px; margin:0 auto; text-align: center;" UpdateMode="Conditional">
+    <ContentTemplate>
+        <asp:GridView ID="dgvResponses" runat="server">
+        </asp:GridView>
+    </ContentTemplate>
+            </asp:updatepanel>
+        </div>
     </div>
 
 </form>
