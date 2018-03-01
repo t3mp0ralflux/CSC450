@@ -121,22 +121,40 @@ namespace WebEval {
         protected global::System.Web.UI.WebControls.ImageButton btnRight;
         
         /// <summary>
-        /// btnRecStop control.
+        /// btnRecord control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton btnRecStop;
+        protected global::System.Web.UI.WebControls.ImageButton btnRecord;
         
         /// <summary>
-        /// btnPlayPause control.
+        /// btnStop control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton btnPlayPause;
+        protected global::System.Web.UI.WebControls.ImageButton btnStop;
+        
+        /// <summary>
+        /// btnPlay control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton btnPlay;
+        
+        /// <summary>
+        /// btnReset control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton btnReset;
         
         /// <summary>
         /// Previous_responses control.

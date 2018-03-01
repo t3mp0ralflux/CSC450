@@ -39,8 +39,8 @@ namespace WebEval
                 btnLeft.Visible = false;
                 btnRight.Visible = false;
                 lblQuestion.Visible = false;
-                btnRecStop.Visible = false;
-                btnPlayPause.Visible = false;
+                //btnRecStop.Visible = false;
+                //btnPlayPause.Visible = false;
                 dgvResponses.Visible = false;
                 questions.Columns.Add("Questions");
                 questions.Rows.Add("Please Describe a system briefly");
@@ -68,8 +68,8 @@ namespace WebEval
                 btnLoginSubmit.Visible = false;
                 btnRight.Visible = true;
                 btnLeft.Visible = true;
-                btnRecStop.Visible = true;
-                btnPlayPause.Visible = true;
+               // btnRecStop.Visible = true;
+               // btnPlayPause.Visible = true;
                 lblQuestion.Visible = true;
                 dgvResponses.Visible = true;
                 dgvResponses.DataSource = Session["question1"];
