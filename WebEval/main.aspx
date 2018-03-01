@@ -1,4 +1,8 @@
-﻿<html lang="en-us">
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="main.aspx.cs" Inherits="WebEval.main" %>
+
+<!DOCTYPE html>
+
+<html lang="en-us">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
@@ -138,7 +142,7 @@
             recorder && recorder.record();
             document.getElementById("recordButton").disabled = true;
             document.getElementById("stopButton").disabled = false;
-            document.getElementById("playButton").disabled = true; 
+            document.getElementById("playButton").disabled = true;
             document.getElementById("restartButton").disabled = true;
             __log('Recording...');
         }
