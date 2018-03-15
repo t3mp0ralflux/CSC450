@@ -23,7 +23,7 @@
             <asp:TextBox ID="dblUNCWId" class="form-control" placeholder="Enter 850 number" runat="server" Visible="False"></asp:TextBox>
             <asp:Button ID="btnLoginSubmit" class="btn-success" runat="server" Text="Submit" Width="112px" OnClick="btnLoginSubmit_Click" Visible="False" UseSubmitBehavior="False" />
         </p>
-        <div style="width: 800px; margin:0 auto; text-align: center;">
+        <div style="width: auto; margin:0 auto; text-align: center;">
             <asp:UpdatePanel ID="text_update" runat="server" UpdateMode="Always">
                 <ContentTemplate>
             <asp:Label ID="lblQuestion" runat="server" Text="Press the right arrow to start the questionnaire."></asp:Label>
@@ -31,7 +31,7 @@
                 </asp:UpdatePanel>
         </div>
         <div>
-        <asp:updatepanel ID="button_update" runat="server" style="width:800px; margin:0 auto; text-align: center;" UpdateMode="Conditional">
+        <asp:updatepanel ID="button_update" runat="server" style="width:auto; margin:0 auto; text-align: center;" UpdateMode="Conditional">
             <ContentTemplate>
             <asp:ImageButton ID="btnLeft" UseSubmitBehavior="false" runat="server" ImageUrl="images/left_arrow.png" Height="77px" Width="173px" OnClick="left_arrow_Click"/>
             <div class="divider"></div>
@@ -45,7 +45,7 @@
                 <div class="divider"></div>
                 <asp:ImageButton ID="btnPlay" runat="server" Height="70px" ImageUrl="images/play_button.png" Width="70px" OnClientClick="playRecording()" />
                 <div class="divider"></div>
-                <asp:ImageButton ID="btnReset" runat="server" Height="70px" ImageUrl="images/pause_button.png" Width="70px" OnClientClick="resetRecording()" />
+                <asp:ImageButton ID="btnReset" runat="server" Height="70px" ImageUrl="images/pause_button.png" Width="70px" OnClientClick="restartRecording()" />
 
                 </ContentTemplate>
             </asp:updatepanel>
