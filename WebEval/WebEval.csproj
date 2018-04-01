@@ -71,12 +71,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="images\left_arrow.png" />
+    <Content Include="Index.html" />
     <Content Include="main.aspx" />
     <Content Include="packages.config" />
     <Content Include="images\pause_button.png" />
     <Content Include="images\play_button.png" />
     <Content Include="images\record_button.png" />
     <Content Include="images\right_arrow.png" />
+    <Content Include="Scripts\backend.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
     <None Include="Web.Debug.config">
