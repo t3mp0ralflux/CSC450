@@ -62,102 +62,99 @@
 
 
 </form>
-            <script src="scripts/install.js"></script>
+   <script src="scripts/install.js"></script>
 
     <script src="scripts/mediaDevices-getUserMedia-polyfill.js"></script>
     <!-- Below is your custom application script -->
     <script src="scripts/app.js"></script>
-    <script src="scripts/recorder.js"></script>
-
+    <script src="scripts/backend.js"></script>
+    <script src="scripts/p5/p5.min.js"></script>
+    <script src="scripts/p5/addons/p5.dom.min.js"></script>
+    <script src="Scripts/p5/addons/p5.sound.js"></script>
     <script type="text/javascript">
 
-        function nextQuestion() {
+          var mic;
+          var recorder;
 
-        }
+          //Soundfile is a p5.soundfile() class object.
+          //Most likely you can just store this as a Json inside the database.
+          //In order to play the soundfile, just do sound_file.play();
+          var sound_file;
 
-        function __log(e, data) {
-            log.innerHTML += "\n" + e + " " + (data || '');
-        }
+          /**   Initliazes the the mic, recorder, and soundfile variables.
+            *    Also asks user for permission to use microphone.
+            */
+          function setup(){
+            mic = new p5.AudioIn();
+            mic.start();
+            recorder = new p5.SoundRecorder();
+            recorder.setInput(mic);
+            sound_file= new p5.SoundFile();
 
-        var audio_context;
-        var recorder;
+          }
 
-        function startUserMedia(stream) {
-            var input = audio_context.createMediaStreamSource(stream);
-            __log('Media stream created.');
+           /**  
+                Starts the recording process, only works if mic is enabled, otherwise a pop up still tell you your mic isn't enabled.
+                Also disables the record button(your already recording), play button, and reset button.
+            */
+          function startRecording(){
+            console.log("start Recording ....");
+            if(mic.enabled)
+                recorder.record(sound_file)
+            else{
+                window.alert("Mic is not enabled");
+                }
 
-            // Uncomment if you want the audio to feedback directly
-            //input.connect(audio_context.destination);
-            //__log('Input connected to audio context destination.');
 
-            recorder = new Recorder(input);
-            __log('Recorder initialised.');
-        }
-
-        function startRecording() {
-            recorder && recorder.record();
             document.getElementById("btnRecord").disabled = true;
             document.getElementById("btnStop").disabled = false;
             document.getElementById("btnPlay").disabled = true;
             document.getElementById("btnReset").disabled = true;
-            __log('Recording...');
-        }
+          }
 
-        function stopRecording() {
-            recorder && recorder.stop();
+            /**
+               Stops the recording process.
+               Enables all recorder-related buttons.
+            */
+          function stopRecording(){
+                console.log("Stop Recording.....");
+                recorder.stop();
+
             document.getElementById("btnRecord").disabled = false;
             document.getElementById("btnPlay").disabled = false;
             document.getElementById("btnStop").disabled = false;
             document.getElementById("btnReset").disabled = false;
 
+          }
+            
+            /** 
+                Plays the current recording.
+            */
+          function playRecording(){
+            sound_file.play();
+            console.log("play Recording....");
+          }
+            
+            /**
+                restarts the recording process.
+                Also sets the play button, stop button, and reset button to disabled, since there is no recording to interact with.
+            */
+          function restartRecording(){
+            recorder._clear();
+            sound_file = new p5.SoundFile();
+            console.log("Erase Recording....");
 
-            __log('Stopped recording.');
-
-            // create WAV download link using audio data blob
-
-
-        }
-
-        function restartRecording() {
             document.getElementById("btnRecord").disabled = false;
             document.getElementById("btnPlay").disabled = true;
             document.getElementById("btnStop").disabled = true;
             document.getElementById("btnReset").disabled = true;
 
+          }
 
-            recorder && recorder.clear();
-            recorder.clear();
-        }
 
-        function playRecording() {
-            recorder && recorder.exportWAV(function (blob) {
-                var url = URL.createObjectURL(blob);
-                var audio = document.createElement('audio');
-                audio.src = url;
-                console.log(audio);
-                audio.play();
-            });
-        }
 
-        window.onload = function init() {
-            try {
-                // webkit shim
-                window.AudioContext = window.AudioContext || window.webkitAudioContext;
-                navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia;
-                window.URL = window.URL || window.webkitURL;
 
-                audio_context = new AudioContext;
-                __log('Audio context set up.');
-                __log('navigator.getUserMedia ' + (navigator.getUserMedia ? 'available.' : 'not present!'));
-            } catch (e) {
-                alert('No web audio support in this browser!');
-            }
-
-            navigator.getUserMedia({ audio: true }, startUserMedia, function (e) {
-                __log('No live audio input: ' + e);
-            });
-        };
-
+          setup();
     </script>
 
 </body>

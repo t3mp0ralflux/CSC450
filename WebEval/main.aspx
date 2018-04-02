@@ -104,9 +104,8 @@
     <!--button id="install-btn">Install app "coming soon"</button-->
     </aside>
 
-
+  
     <script src="scripts/install.js"></script>
-
     <script src="scripts/mediaDevices-getUserMedia-polyfill.js"></script>
 
     <!-- Below is your custom application script -->

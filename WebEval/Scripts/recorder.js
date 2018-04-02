@@ -96,6 +96,9 @@ var Recorder = exports.Recorder = (function () {
                     case 'clear':
                         clear();
                         break;
+                    case 'shit':
+                        shit();
+                        break;
                 }
             };
 
@@ -111,7 +114,7 @@ var Recorder = exports.Recorder = (function () {
                 }
                 recLength += inputBuffer[0].length;
             }
-
+            /**
             function exportWAV(type) {
                 var buffers = [];
                 for (var channel = 0; channel < numChannels; channel++) {
@@ -127,6 +130,25 @@ var Recorder = exports.Recorder = (function () {
                 var audioBlob = new Blob([dataview], { type: type });
 
                 self.postMessage({ command: 'exportWAV', data: audioBlob });
+                return dataview;
+            }
+            **/
+            function shit() {
+                var buffers = [];
+                for (var channel = 0; channel < numChannels; channel++) {
+                    buffers.push(mergeBuffers(recBuffers[channel], recLength));
+                }
+                var interleaved = undefined;
+                if (numChannels === 2) {
+                    interleaved = interleave(buffers[0], buffers[1]);
+                } else {
+                    interleaved = buffers[0];
+                }
+                var dataview = encodeWAV(interleaved);
+                //var audioBlob = new Blob([dataview], { type: type });
+
+                self.postMessage({ command: 'exportWAV', data: audioBlob });
+                return dataview;
             }
 
             function getBuffer() {
