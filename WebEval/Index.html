@@ -103,23 +103,24 @@
 
           }
 
-           /**  
+           /**
                 Starts the recording process, only works if mic is enabled, otherwise a pop up still tell you your mic isn't enabled.
                 Also disables the record button(your already recording), play button, and reset button.
             */
           function startRecording(){
             console.log("start Recording ....");
-            if(mic.enabled)
+            if(mic.enabled){
+
                 recorder.record(sound_file)
+                document.getElementById("btnRecord").disabled = true;
+                document.getElementById("btnStop").disabled = false;
+                document.getElementById("btnPlay").disabled = true;
+                document.getElementById("btnReset").disabled = true;
+                }
             else{
                 window.alert("Mic is not enabled");
                 }
 
-
-            document.getElementById("btnRecord").disabled = true;
-            document.getElementById("btnStop").disabled = false;
-            document.getElementById("btnPlay").disabled = true;
-            document.getElementById("btnReset").disabled = true;
           }
 
             /**
@@ -127,8 +128,8 @@
                Enables all recorder-related buttons.
             */
           function stopRecording(){
-                console.log("Stop Recording.....");
-                recorder.stop();
+            console.log("Stop Recording.....");
+            recorder.stop();
 
             document.getElementById("btnRecord").disabled = false;
             document.getElementById("btnPlay").disabled = false;
@@ -136,15 +137,15 @@
             document.getElementById("btnReset").disabled = false;
 
           }
-            
-            /** 
+
+            /**
                 Plays the current recording.
             */
           function playRecording(){
             sound_file.play();
             console.log("play Recording....");
           }
-            
+
             /**
                 restarts the recording process.
                 Also sets the play button, stop button, and reset button to disabled, since there is no recording to interact with.
@@ -160,9 +161,6 @@
             document.getElementById("btnReset").disabled = true;
 
           }
-
-
-
 
           setup();
 
