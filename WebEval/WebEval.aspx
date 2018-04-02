@@ -99,17 +99,18 @@
             */
           function startRecording(){
             console.log("start Recording ....");
-            if(mic.enabled)
+            if(mic.enabled){
+
                 recorder.record(sound_file)
+                document.getElementById("btnRecord").disabled = true;
+                document.getElementById("btnStop").disabled = false;
+                document.getElementById("btnPlay").disabled = true;
+                document.getElementById("btnReset").disabled = true;
+
+                }
             else{
                 window.alert("Mic is not enabled");
                 }
-
-
-            document.getElementById("btnRecord").disabled = true;
-            document.getElementById("btnStop").disabled = false;
-            document.getElementById("btnPlay").disabled = true;
-            document.getElementById("btnReset").disabled = true;
           }
 
             /**
@@ -117,8 +118,8 @@
                Enables all recorder-related buttons.
             */
           function stopRecording(){
-                console.log("Stop Recording.....");
-                recorder.stop();
+            console.log("Stop Recording.....");
+            recorder.stop();
 
             document.getElementById("btnRecord").disabled = false;
             document.getElementById("btnPlay").disabled = false;
@@ -150,9 +151,6 @@
             document.getElementById("btnReset").disabled = true;
 
           }
-
-
-
 
           setup();
     </script>
