@@ -278,3 +278,6 @@ C:\Sites\CSC450\WebEval\obj\Debug\WebEval.csprojResolveAssemblyReference.cache
 C:\Sites\CSC450\WebEval\obj\Debug\WebEval.csproj.CoreCompileInputs.cache
 C:\Sites\CSC450\WebEval\obj\Debug\WebEval.dll
 C:\Sites\CSC450\WebEval\obj\Debug\WebEval.pdb
+C:\Users\mingo_000\Source\Repos\CSC450\WebEval\obj\Debug\WebEval.csprojResolveAssemblyReference.cache
+C:\Users\mingo_000\Source\Repos\CSC450\WebEval\obj\Debug\WebEval.dll
+C:\Users\mingo_000\Source\Repos\CSC450\WebEval\obj\Debug\WebEval.pdb
