@@ -70,6 +70,14 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\AudioDB.mdf" />
+    <Content Include="App_Data\AudioDB_log.ldf">
+      <DependentUpon>AudioDB.mdf</DependentUpon>
+    </Content>
+    <Content Include="App_Data\RegistrationDB.mdf" />
+    <Content Include="App_Data\RegistrationDB_log.ldf">
+      <DependentUpon>RegistrationDB.mdf</DependentUpon>
+    </Content>
     <Content Include="images\left_arrow.png" />
     <Content Include="Index.html" />
     <Content Include="main.aspx" />
@@ -167,7 +175,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
