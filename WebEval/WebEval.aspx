@@ -15,8 +15,6 @@
             <asp:Image ID="Image1" runat="server" Height="87px" ImageUrl="images/house_teal.gif" style="text-align: left" Width="156px" />
             <asp:Label ID="lblTitle" runat="server" Text="WebEval"></asp:Label>
         </h1>
-            <h2>Log</h2>
-    <pre id="log"></pre>
         <p style="text-align: left">
             <asp:Label runat="server" ID="lblIdNumber" Visible="False">UNCW Id Number</asp:Label>
             <br />
