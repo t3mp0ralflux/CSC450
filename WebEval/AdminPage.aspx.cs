@@ -123,7 +123,7 @@ namespace WebEval
             GridViewRow row = (GridViewRow)GridView2.Rows[e.RowIndex];
             Label lbldeleteid = (Label)row.FindControl("lblID");
             conn.Open();
-            SqlCommand cmd = new SqlCommand("delete FROM questions where Id='" + Convert.ToInt32(GridView2.DataKeys[e.RowIndex].Value.ToString()) + "'", conn);
+            SqlCommand cmd = new SqlCommand("delete FROM questions where Id='" + Convert.ToInt64(GridView2.DataKeys[e.RowIndex].Value.ToString()) + "'", conn);
             cmd.ExecuteNonQuery();
             conn.Close();
             gvbind2();
@@ -195,7 +195,7 @@ namespace WebEval
             GridViewRow row = (GridViewRow)GridView3.Rows[e.RowIndex];
             Label lbldeleteid = (Label)row.FindControl("lblID");
             conn.Open();
-            SqlCommand cmd = new SqlCommand("delete FROM responses where Id='" + Convert.ToInt32(GridView3.DataKeys[e.RowIndex].Value.ToString()) + "'", conn);
+            SqlCommand cmd = new SqlCommand("delete FROM responses where Id='" + Convert.ToInt64(GridView3.DataKeys[e.RowIndex].Value.ToString()) + "'", conn);
             cmd.ExecuteNonQuery();
             conn.Close();
             gvbind3();
