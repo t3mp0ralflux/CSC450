@@ -284,3 +284,7 @@ C:\Users\mingo_000\Source\Repos\CSC450\WebEval\obj\Debug\WebEval.pdb
 C:\Users\Brent\Desktop\Melanie\csc450\WebEval\bin\roslyn\System.IO.Pipes.AccessControl.dll
 C:\Users\Brent\Desktop\Melanie\csc450\WebEval\obj\Debug\WebEval.Properties.Resources.resources
 C:\Users\Brent\Desktop\Melanie\csc450\WebEval\obj\Debug\WebEval.csproj.GenerateResource.Cache
+C:\Users\brent\Desktop\csc450\csc450\WebEval\bin\roslyn\System.IO.Pipes.AccessControl.dll
+C:\Users\brent\Desktop\csc450\csc450\WebEval\obj\Debug\WebEval.csprojResolveAssemblyReference.cache
+C:\Users\brent\Desktop\csc450\csc450\WebEval\obj\Debug\WebEval.Properties.Resources.resources
+C:\Users\brent\Desktop\csc450\csc450\WebEval\obj\Debug\WebEval.csproj.GenerateResource.Cache

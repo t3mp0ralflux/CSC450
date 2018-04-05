@@ -52,7 +52,7 @@ namespace WebEval
             GridViewRow row = (GridViewRow)GridView1.Rows[e.RowIndex];
             Label lbldeleteid = (Label)row.FindControl("lblID");
             conn.Open();
-            SqlCommand cmd = new SqlCommand("delete FROM Users where Id='" + Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value.ToString()) + "'", conn);
+            SqlCommand cmd = new SqlCommand("delete FROM Users where Id='" + Convert.ToInt64(GridView1.DataKeys[e.RowIndex].Value.ToString()) + "'", conn);
             cmd.ExecuteNonQuery();
             conn.Close();
             gvbind();
