@@ -39,11 +39,11 @@
                 <br />
                 <asp:ImageButton ID="btnRecord" runat="server" Height="70px" ImageUrl="images/record_button.png" Width="70px" OnClientClick="startRecording()"/>
                 <div class="divider"></div>
-                <asp:ImageButton ID="btnStop" runat="server" Height="70px" ImageUrl="images/stop_button.png" Width="70px" OnClientClick="stopRecording()" />
+                <asp:ImageButton ID="btnStop" runat="server" Height="70px" ImageUrl="images/stop_button_disabled.png" Width="70px" OnClientClick="stopRecording()" />
                 <div class="divider"></div>
-                <asp:ImageButton ID="btnPlay" runat="server" Height="70px" ImageUrl="images/play_button.png" Width="70px" OnClientClick="playRecording()" />
+                <asp:ImageButton ID="btnPlay" runat="server" Height="70px" ImageUrl="images/play_button_disabled.png" Width="70px" OnClientClick="playRecording()" />
                 <div class="divider"></div>
-                <asp:ImageButton ID="btnReset" runat="server" Height="70px" ImageUrl="images/pause_button.png" Width="70px" OnClientClick="restartRecording()" />
+                <asp:ImageButton ID="btnReset" runat="server" Height="70px" ImageUrl="images/reset_button_disabled.png" Width="70px" OnClientClick="restartRecording()" />
 
                 </ContentTemplate>
             </asp:updatepanel>
@@ -101,9 +101,13 @@
 
                 recorder.record(sound_file)
                 document.getElementById("btnRecord").disabled = true;
+                document.getElementById("btnRecord").src = "images/record_button_disabled.png";
                 document.getElementById("btnStop").disabled = false;
+                document.getElementById("btnStop").src = "images/stop_button.png";
+                document.getElementById("btnPlay").src = "images/play_button_disabled.png";
                 document.getElementById("btnPlay").disabled = true;
                 document.getElementById("btnReset").disabled = true;
+                
 
                 }
             else{
@@ -120,9 +124,14 @@
             recorder.stop();
 
             document.getElementById("btnRecord").disabled = false;
+            document.getElementById("btnRecord").src = "images/record_button.png";
             document.getElementById("btnPlay").disabled = false;
-            document.getElementById("btnStop").disabled = false;
+            document.getElementById("btnPlay").src = "images/play_button.png";
+            document.getElementById("btnStop").disabled = true;
+            document.getElementById("btnStop").src = "images/stop_button_disabled.png";
             document.getElementById("btnReset").disabled = false;
+            document.getElementById("btnReset").src = "images/reset_button.png";
+            saveSound(sound_file, 'tempSound.wav');
 
           }
             
@@ -145,8 +154,11 @@
 
             document.getElementById("btnRecord").disabled = false;
             document.getElementById("btnPlay").disabled = true;
+            document.getElementById("btnPlay").src = "images/play_button_disabled.png";
             document.getElementById("btnStop").disabled = true;
+            document.getElementById("btnStop").src = "images/stop_button_disabled.png";
             document.getElementById("btnReset").disabled = true;
+            document.getElementById("btnReset").src = "images/reset_button_disabled.png";
 
           }
 

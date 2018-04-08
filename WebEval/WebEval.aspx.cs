@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
+using MySql.Data.MySqlClient;
 
 namespace WebEval
 {
@@ -16,13 +17,24 @@ namespace WebEval
         DataTable users = new DataTable();
         DataTable responses = new DataTable();
 
+        
+        
+
         public int questionCounter;
         public string query;
+        public object recording;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
+                MySqlConnectionStringBuilder conn_string = new MySqlConnectionStringBuilder();
+                conn_string.Server = "localhost";
+                conn_string.UserID = "root";
+                conn_string.Password = "password";
+                conn_string.Database = "webeval";
+                
+
                 questionCounter = -1;
                 dblUNCWId.Visible = true;
                 btnLoginSubmit.Visible = true;
@@ -125,14 +137,19 @@ namespace WebEval
 
         protected DataTable queryDB(DataTable dt, string query)
        {
-            using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.DBCon))
-            using (SqlCommand cmd = new SqlCommand(query, connection))
+            using (MySqlConnection connection = new MySqlConnection(Properties.Settings.Default.DBCon))
+            using (MySqlCommand cmd = new MySqlCommand(query, connection))
             {
                 connection.Open();
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                 da.Fill(dt);
                 return dt;
             }
+        }
+
+        protected void saveRecording(object recording, string qNumber, string userID)
+        {
+
         }
     }
 }

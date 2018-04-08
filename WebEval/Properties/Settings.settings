@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="DBCon" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\WebEvalDB.mdf;Integrated Security=True</Value>
+      <Value Profile="(Default)">Server="localhost";Database="webeval";UID="root";password="password"</Value>
     </Setting>
   </Settings>
 </SettingsFile>

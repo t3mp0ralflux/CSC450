@@ -25,8 +25,7 @@ namespace WebEval.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\WebEvalDB.mdf" +
-            ";Integrated Security=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Server=\"localhost\";Database=\"webeval\";UID=\"root\";password=\"password\"")]
         public string DBCon {
             get {
                 return ((string)(this["DBCon"]));
