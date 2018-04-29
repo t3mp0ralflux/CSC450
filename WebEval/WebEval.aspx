@@ -20,6 +20,7 @@
             <br />
             <asp:TextBox ID="dblUNCWId" class="form-control" placeholder="Enter 850 number" runat="server" Visible="False"></asp:TextBox>
             <asp:Button ID="btnLoginSubmit" class="btn-success" runat="server" Text="Submit" Width="112px" OnClick="btnLoginSubmit_Click" Visible="False" UseSubmitBehavior="False" />
+            <asp:Button ID="btnLogout" CssClass="btn-success" runat="server" Text="Logout" Width="112px" Visible="False" UseSubmitBehavior="false" OnClick="btnLogout_Click" />
         </p>
         <div style="width: auto; margin:0 auto; text-align: center;">
             <asp:UpdatePanel ID="text_update" runat="server" UpdateMode="Always">
@@ -49,7 +50,7 @@
             </asp:updatepanel>
             </div>
         <div>
-<asp:updatepanel ID="Previous_responses" runat="server" style="width:800px; margin:0 auto; text-align: center;" UpdateMode="Conditional">
+<asp:updatepanel ID="Previous_responses" runat="server" style="width:800px; margin:0 auto; text-align: center;" >
     <ContentTemplate>
         <asp:GridView ID="dgvResponses" runat="server">
         </asp:GridView>
