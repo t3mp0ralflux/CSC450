@@ -64,6 +64,8 @@ namespace WebEval
                 btnPlay.Visible = false;
                 btnReset.Visible = false;
                 btnStop.Visible = false;
+                btnUpload.Visible = false;
+              
                 dgvResponses.Visible = true;
 
                 //grab the questions from the DB
@@ -127,10 +129,11 @@ namespace WebEval
                 lblQuestion.Visible = true;
                 dgvResponses.Visible = true;
                 btnLogout.Visible = true;
+                btnUpload.Visible = true;
 
                 // this is set aside for now as there is no way to store responses.
-               // dgvResponses.DataSource = Session["responses"];
-               // dgvResponses.DataBind();
+                // dgvResponses.DataSource = Session["responses"];
+                // dgvResponses.DataBind();
 
             }
         }

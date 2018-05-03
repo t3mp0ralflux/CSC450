@@ -11220,6 +11220,7 @@ soundRecorder = function () {
    *  @param  {String} name      name of the resulting .wav file.
    */
   p5.prototype.saveSound = function (soundFile, name) {
+     console.log("asdf asdf asdf");
     var leftChannel, rightChannel;
     leftChannel = soundFile.buffer.getChannelData(0);
     // handle mono files

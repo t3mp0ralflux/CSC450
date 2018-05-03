@@ -129,7 +129,7 @@
             document.getElementById("btnStop").src = "/Models/images/stop_button_disabled.png";
             document.getElementById("btnReset").disabled = false;
             document.getElementById("btnReset").src = "/Models/images/reset_button.png";
-            var a = saveSound(sound_file, 'tempSound.wav');
+            //var a = saveSound(sound_file, 'tempSound.wav');
         
           }
             
