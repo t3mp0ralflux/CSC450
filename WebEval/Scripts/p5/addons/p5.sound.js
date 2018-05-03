@@ -11259,7 +11259,9 @@ soundRecorder = function () {
       view.setInt16(index, interleaved[i] * (32767 * volume), true);
       index += 2;
     }
-    p5.prototype.writeFile([view], name, 'wav');
+    console.log("WTf is happening");
+    var x = p5.prototype.writeFile([view], name, 'wav');
+    return x;
   };
   // helper methods to save waves
   function interleave(leftChannel, rightChannel) {

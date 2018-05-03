@@ -45,7 +45,7 @@
                 <asp:ImageButton ID="btnPlay" runat="server" Height="70px" ImageUrl="~/Models/images/play_button.png" Width="70px" OnClientClick="playRecording()" />
                 <div class="divider"></div>
                 <asp:ImageButton ID="btnReset" runat="server" Height="70px" ImageUrl="~/Models/images/reset_button_disabled.png" Width="70px" OnClientClick="restartRecording()" />
-                <asp:ImageButton ID="btnUpload" runat="server" Height="70px" ImageUrl="~/Models/images/upload.png" Width="70px" OnClientClick="restartRecording()"/>
+                <asp:ImageButton ID="btnUpload" runat="server" Height="70px" ImageUrl="~/Models/images/upload.png" Width="70px" OnClientClick="uploadRecording()"/>
                         
                 </ContentTemplate>
             </asp:updatepanel>
@@ -69,68 +69,95 @@
     <script src="scripts/app.js"></script>
     <script src="scripts/backend.js"></script>
     <script src="scripts/p5/p5.min.js"></script>
-    <script src="scripts/p5/addons/p5.dom.min.js"></script>
+    <script src="scripts/p5/addons/p5.dom.js"></script>
     <script src="Scripts/p5/addons/p5.sound.js"></script>
-    
-
-
-    <script src="scripts/recorder.js"></script>
-
     <script type="text/javascript">
-        function nextQuestion() {
-        }
-        mic = new p5.AudioIn();
+          var mic;
+          var recorder;
+          //Soundfile is a p5.soundfile() class object.
+          //Most likely you can just store this as a Json inside the database.
+          //In order to play the soundfile, just do sound_file.play();
+          var sound_file;
+          /**   Initliazes the the mic, recorder, and soundfile variables.
+            *    Also asks user for permission to use microphone.
+            */
+          function setup(){
+            mic = new p5.AudioIn();
+            mic.start();
+            recorder = new p5.SoundRecorder();
+            recorder.setInput(mic);
+            sound_file= new p5.SoundFile();
+          }
+           /**  
+                Starts the recording process, only works if mic is enabled, otherwise a pop up still tell you your mic isn't enabled.
+                Also disables the record button(your already recording), play button, and reset button.
+            */
+          function startRecording(){
+            console.log("start Recording ....");
+            if(mic.enabled){
+                recorder.record(sound_file)
+                document.getElementById("btnRecord").disabled = true;
+                document.getElementById("btnRecord").src = "/Models/images/record_button_disabled.png";
+                document.getElementById("btnStop").disabled = false;
+                document.getElementById("btnStop").src = "/Models/images/stop_button.png";
+                document.getElementById("btnPlay").src = "/Models/images/play_button_disabled.png";
+                document.getElementById("btnPlay").disabled = true;
+                document.getElementById("btnReset").disabled = true;
+                
+                }
+            else{
+                window.alert("Mic is not enabled");
+                }
+          }
 
-        var audio_context;
-        var recorder;
-        function startUserMedia(stream) {
-            var input = audio_context.createMediaStreamSource(stream);
-            console.log('Media stream created.');
-            // Uncomment if you want the audio to feedback directly
-            //input.connect(audio_context.destination);
-            //__log('Input connected to audio context destination.');
-            recorder = new Recorder(input);
-            console.log('Recorder initialised.');
-        }
-        function startRecording() {
-            recorder && recorder.record();
-      
-            console.log('Recording...');
-        }
-        function stopRecording() {
-            recorder && recorder.stop();
-            console.log('Stopped recording.');
-            // create WAV download link using audio data blob
-        }
-        function restartRecording() {
-            recorder && recorder.clear();
-            recorder.clear();
-        }
-        function playRecording() {
-            recorder && recorder.exportWAV(function (blob) {
-                var url = URL.createObjectURL(blob);
-                var audio = document.createElement('audio');
-                audio.src = url;
-                console.log(audio);
-                audio.play();
-            });
-        }
-        window.onload = function init() {
-            try {
-                // webkit shim
-                window.AudioContext = window.AudioContext || window.webkitAudioContext;
-                navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia;
-                window.URL = window.URL || window.webkitURL;
-                audio_context = new AudioContext;
-                console.log('Audio context set up.');
-                console.log('navigator.getUserMedia ' + (navigator.getUserMedia ? 'available.' : 'not present!'));
-            } catch (e) {
-                alert('No web audio support in this browser!');
+           function uploadRecording(){
+            saveSound(sound_file,'mySound.wave');
+
             }
-            navigator.getUserMedia({ audio: true }, startUserMedia, function (e) {
-                console.log('No live audio input: ' + e);
-            });
-        };
+            /**
+               Stops the recording process.
+               Enables all recorder-related buttons.
+            */
+          function stopRecording(){
+            console.log("Stop Recording.....");
+            recorder.stop();
+            document.getElementById("btnRecord").disabled = false;
+            document.getElementById("btnRecord").src = "/Models/images/record_button.png";
+            document.getElementById("btnPlay").disabled = false;
+            document.getElementById("btnPlay").src = "/Models/images/play_button.png";
+            document.getElementById("btnStop").disabled = true;
+            document.getElementById("btnStop").src = "/Models/images/stop_button_disabled.png";
+            document.getElementById("btnReset").disabled = false;
+            document.getElementById("btnReset").src = "/Models/images/reset_button.png";
+            var a = saveSound(sound_file, 'tempSound.wav');
+        
+          }
+            
+            /** 
+                Plays the current recording.
+            */
+          function playRecording(){
+            sound_file.play();
+            console.log("play Recording....");
+          }
+            
+            /**
+                restarts the recording process.
+                Also sets the play button, stop button, and reset button to disabled, since there is no recording to interact with.
+            */
+          function restartRecording(){
+            recorder._clear();
+            sound_file = new p5.SoundFile();
+            console.log("Erase Recording....");
+            document.getElementById("btnRecord").disabled = false;
+            document.getElementById("btnPlay").disabled = true;
+            document.getElementById("btnPlay").src = "/Models/images/play_button_disabled.png";
+            document.getElementById("btnStop").disabled = true;
+            document.getElementById("btnStop").src = "/Models/images/stop_button_disabled.png";
+            document.getElementById("btnReset").disabled = true;
+            document.getElementById("btnReset").src = "/Models/images/reset_button_disabled.png";
+          }
+          setup();
     </script>
 
 </body>
