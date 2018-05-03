@@ -49,7 +49,7 @@ namespace WebEval
                 MySqlConnectionStringBuilder conn_string = new MySqlConnectionStringBuilder();
                 conn_string.Server = "localhost";
                 conn_string.UserID = "root";
-                conn_string.Password = "password";
+                conn_string.Password = "YES";
                 conn_string.Database = "webeval";
 
                 //initial view setup
@@ -288,6 +288,11 @@ namespace WebEval
              */
             Session.Abandon();
             Response.Redirect("WebEval.aspx", true);
+        }
+
+        protected void btnUpload_Click(object sender, ImageClickEventArgs e)
+        {
+
         }
     }
 

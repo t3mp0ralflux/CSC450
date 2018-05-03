@@ -12,7 +12,7 @@
     <asp:ScriptManager runat="server" ID="sManager"></asp:ScriptManager>
     <div>    
         <h1 style="text-align: left">
-            <asp:Image ID="Image1" runat="server" Height="87px" ImageUrl="images/house_teal.gif" style="text-align: left" Width="156px" />
+            <asp:Image ID="Image1" runat="server" Height="87px" ImageUrl="~/Models/images/house_teal.gif" style="text-align: left" Width="156px" />
             <asp:Label ID="lblTitle" runat="server" Text="WebEval"></asp:Label>
         </h1>
         <p style="text-align: left">
@@ -32,20 +32,21 @@
         <div>
         <asp:updatepanel ID="button_update" runat="server" style="width:auto; margin:0 auto; text-align: center;" UpdateMode="Conditional">
             <ContentTemplate>
-            <asp:ImageButton ID="btnLeft" UseSubmitBehavior="false" runat="server" ImageUrl="images/left_arrow.png" Height="77px" Width="173px" OnClick="left_arrow_Click"/>
+            <asp:ImageButton ID="btnLeft" UseSubmitBehavior="false" runat="server" ImageUrl="~/Models/images/left_arrow.png" Height="77px" Width="173px" OnClick="left_arrow_Click"/>
             <div class="divider"></div>
 
-            <asp:ImageButton ID="btnRight" UseSubmitBehavior="false" runat="server" Height="77px" ImageUrl="images/right_arrow.png" Width="173px" OnClick="right_arrow_Click" />
+            <asp:ImageButton ID="btnRight" UseSubmitBehavior="false" runat="server" Height="77px" ImageUrl="~/Models/images/right_arrow.png" Width="173px" OnClick="right_arrow_Click" />
 
                 <br />
-                <asp:ImageButton ID="btnRecord" runat="server" Height="70px" ImageUrl="images/record_button.png" Width="70px" OnClientClick="startRecording()"/>
+                <asp:ImageButton ID="btnRecord" runat="server" Height="70px" ImageUrl="~/Models/images/record_button.png" Width="70px" OnClientClick="startRecording()"/>
                 <div class="divider"></div>
-                <asp:ImageButton ID="btnStop" runat="server" Height="70px" ImageUrl="images/stop_button_disabled.png" Width="70px" OnClientClick="stopRecording()" />
+                <asp:ImageButton ID="btnStop" runat="server" Height="70px" ImageUrl="~/Models/images/stop_button.png" Width="70px" OnClientClick="stopRecording()" />
                 <div class="divider"></div>
-                <asp:ImageButton ID="btnPlay" runat="server" Height="70px" ImageUrl="images/play_button_disabled.png" Width="70px" OnClientClick="playRecording()" />
+                <asp:ImageButton ID="btnPlay" runat="server" Height="70px" ImageUrl="~/Models/images/play_button.png" Width="70px" OnClientClick="playRecording()" />
                 <div class="divider"></div>
-                <asp:ImageButton ID="btnReset" runat="server" Height="70px" ImageUrl="images/reset_button_disabled.png" Width="70px" OnClientClick="restartRecording()" />
-
+                <asp:ImageButton ID="btnReset" runat="server" Height="70px" ImageUrl="~/Models/images/reset_button_disabled.png" Width="70px" OnClientClick="restartRecording()" />
+                <asp:ImageButton ID="btnUpload" runat="server" Height="70px" ImageUrl="~/Models/images/upload.png" Width="70px" OnClientClick="restartRecording()"/>
+                        
                 </ContentTemplate>
             </asp:updatepanel>
             </div>
@@ -70,100 +71,66 @@
     <script src="scripts/p5/p5.min.js"></script>
     <script src="scripts/p5/addons/p5.dom.min.js"></script>
     <script src="Scripts/p5/addons/p5.sound.js"></script>
+       <script src="scripts/recorder.js"></script>
+
+
+    <script src="scripts/recorder.js"></script>
+
     <script type="text/javascript">
+        function nextQuestion() {
+        }
+        mic = new p5.AudioIn();
 
-          var mic;
-          var recorder;
-
-          //Soundfile is a p5.soundfile() class object.
-          //Most likely you can just store this as a Json inside the database.
-          //In order to play the soundfile, just do sound_file.play();
-          var sound_file;
-
-          /**   Initliazes the the mic, recorder, and soundfile variables.
-            *    Also asks user for permission to use microphone.
-            */
-          function setup(){
-            mic = new p5.AudioIn();
-            mic.start();
-            recorder = new p5.SoundRecorder();
-            recorder.setInput(mic);
-            sound_file= new p5.SoundFile();
-
-          }
-
-           /**  
-                Starts the recording process, only works if mic is enabled, otherwise a pop up still tell you your mic isn't enabled.
-                Also disables the record button(your already recording), play button, and reset button.
-            */
-          function startRecording(){
-            console.log("start Recording ....");
-            if(mic.enabled){
-
-                recorder.record(sound_file)
-                document.getElementById("btnRecord").disabled = true;
-                document.getElementById("btnRecord").src = "images/record_button_disabled.png";
-                document.getElementById("btnStop").disabled = false;
-                document.getElementById("btnStop").src = "images/stop_button.png";
-                document.getElementById("btnPlay").src = "images/play_button_disabled.png";
-                document.getElementById("btnPlay").disabled = true;
-                document.getElementById("btnReset").disabled = true;
-                
-
-                }
-            else{
-                window.alert("Mic is not enabled");
-                }
-          }
-
-            /**
-               Stops the recording process.
-               Enables all recorder-related buttons.
-            */
-          function stopRecording(){
-            console.log("Stop Recording.....");
-            recorder.stop();
-
-            document.getElementById("btnRecord").disabled = false;
-            document.getElementById("btnRecord").src = "images/record_button.png";
-            document.getElementById("btnPlay").disabled = false;
-            document.getElementById("btnPlay").src = "images/play_button.png";
-            document.getElementById("btnStop").disabled = true;
-            document.getElementById("btnStop").src = "images/stop_button_disabled.png";
-            document.getElementById("btnReset").disabled = false;
-            document.getElementById("btnReset").src = "images/reset_button.png";
-            saveSound(sound_file, 'tempSound.wav');
-
-          }
-            
-            /** 
-                Plays the current recording.
-            */
-          function playRecording(){
-            sound_file.play();
-            console.log("play Recording....");
-          }
-            
-            /**
-                restarts the recording process.
-                Also sets the play button, stop button, and reset button to disabled, since there is no recording to interact with.
-            */
-          function restartRecording(){
-            recorder._clear();
-            sound_file = new p5.SoundFile();
-            console.log("Erase Recording....");
-
-            document.getElementById("btnRecord").disabled = false;
-            document.getElementById("btnPlay").disabled = true;
-            document.getElementById("btnPlay").src = "images/play_button_disabled.png";
-            document.getElementById("btnStop").disabled = true;
-            document.getElementById("btnStop").src = "images/stop_button_disabled.png";
-            document.getElementById("btnReset").disabled = true;
-            document.getElementById("btnReset").src = "images/reset_button_disabled.png";
-
-          }
-
-          setup();
+        var audio_context;
+        var recorder;
+        function startUserMedia(stream) {
+            var input = audio_context.createMediaStreamSource(stream);
+            console.log('Media stream created.');
+            // Uncomment if you want the audio to feedback directly
+            //input.connect(audio_context.destination);
+            //__log('Input connected to audio context destination.');
+            recorder = new Recorder(input);
+            console.log('Recorder initialised.');
+        }
+        function startRecording() {
+            recorder && recorder.record();
+      
+            console.log('Recording...');
+        }
+        function stopRecording() {
+            recorder && recorder.stop();
+            console.log('Stopped recording.');
+            // create WAV download link using audio data blob
+        }
+        function restartRecording() {
+            recorder && recorder.clear();
+            recorder.clear();
+        }
+        function playRecording() {
+            recorder && recorder.exportWAV(function (blob) {
+                var url = URL.createObjectURL(blob);
+                var audio = document.createElement('audio');
+                audio.src = url;
+                console.log(audio);
+                audio.play();
+            });
+        }
+        window.onload = function init() {
+            try {
+                // webkit shim
+                window.AudioContext = window.AudioContext || window.webkitAudioContext;
+                navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia;
+                window.URL = window.URL || window.webkitURL;
+                audio_context = new AudioContext;
+                console.log('Audio context set up.');
+                console.log('navigator.getUserMedia ' + (navigator.getUserMedia ? 'available.' : 'not present!'));
+            } catch (e) {
+                alert('No web audio support in this browser!');
+            }
+            navigator.getUserMedia({ audio: true }, startUserMedia, function (e) {
+                console.log('No live audio input: ' + e);
+            });
+        };
     </script>
 
 </body>

@@ -274,7 +274,6 @@ C:\Sites\CSC450\WebEval\bin\roslyn\VBCSCompiler.exe
 C:\Sites\CSC450\WebEval\bin\roslyn\VBCSCompiler.exe.config
 C:\Sites\CSC450\WebEval\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Sites\CSC450\WebEval\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Sites\CSC450\WebEval\obj\Debug\WebEval.csprojResolveAssemblyReference.cache
 C:\Sites\CSC450\WebEval\obj\Debug\WebEval.csproj.CoreCompileInputs.cache
 C:\Sites\CSC450\WebEval\obj\Debug\WebEval.dll
 C:\Sites\CSC450\WebEval\obj\Debug\WebEval.pdb
@@ -290,3 +289,9 @@ C:\Users\brent\Desktop\csc450\csc450\WebEval\obj\Debug\WebEval.Properties.Resour
 C:\Users\brent\Desktop\csc450\csc450\WebEval\obj\Debug\WebEval.csproj.GenerateResource.Cache
 C:\Users\Brent\Desktop\Melanie\csc450\WebEval\bin\MySql.Data.dll
 C:\Users\Brent\Desktop\Melanie\csc450\WebEval\bin\MySql.Data.xml
+C:\Sites\CSC450\WebEval\bin\roslyn\System.IO.Pipes.AccessControl.dll
+C:\Sites\CSC450\WebEval\obj\Debug\WebEval.Properties.Resources.resources
+C:\Sites\CSC450\WebEval\obj\Debug\WebEval.csproj.GenerateResource.Cache
+C:\Sites\CSC450\WebEval\bin\Newtonsoft.Json.dll
+C:\Sites\CSC450\WebEval\bin\Newtonsoft.Json.xml
+C:\Sites\CSC450\WebEval\obj\Debug\WebEval.csprojResolveAssemblyReference.cache

@@ -54,6 +54,9 @@
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="MySql.Data, Version=6.10.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -86,14 +89,15 @@
     <Content Include="Content\bootstrap-reboot.css" />
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="images\left_arrow.png" />
+    <Content Include="Models\images\left_arrow.png" />
     <Content Include="main.aspx" />
     <Content Include="Index.html" />
+    <Content Include="Models\images\upload.png" />
     <Content Include="packages.config" />
-    <Content Include="images\pause_button.png" />
-    <Content Include="images\play_button.png" />
-    <Content Include="images\record_button.png" />
-    <Content Include="images\right_arrow.png" />
+    <Content Include="Models\images\pause_button.png" />
+    <Content Include="Models\images\play_button.png" />
+    <Content Include="Models\images\record_button.png" />
+    <Content Include="Models\images\right_arrow.png" />
     <Content Include="Scripts\backend.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -115,6 +119,12 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Content Include="Scripts\p5\addons\p5.dom.js" />
+    <Content Include="Scripts\p5\addons\p5.dom.min.js" />
+    <Content Include="Scripts\p5\addons\p5.sound.js" />
+    <Content Include="Scripts\p5\addons\p5.sound.min.js" />
+    <Content Include="Scripts\p5\p5.js" />
+    <Content Include="Scripts\p5\p5.min.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
@@ -140,6 +150,8 @@
     <Content Include="Scripts\bootstrap.js.map" />
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />
     <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Scripts\p5\.DS_Store" />
+    <Content Include="Scripts\p5\addons\.DS_Store" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -150,14 +162,14 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Global.asax" />
-    <Content Include="images\house_teal.gif" />
+    <Content Include="Models\images\house_teal.gif" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <Content Include="Scripts\recorder.js" />
-    <Content Include="images\stop_button.png" />
+    <Content Include="Models\images\stop_button.png" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -200,9 +212,7 @@
       <DependentUpon>WebEval.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
